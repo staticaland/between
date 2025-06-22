@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  # BEGIN CONFIG
+  new_key: new_value
+  updated_key: updated_value
+# END CONFIG
+  static_key: static_value
