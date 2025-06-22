@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/staticaland/between/compare/v0.3.0...v0.4.0) (2025-06-22)
+
+
+### Features
+
+* enhance package documentation comment ([26bc314](https://github.com/staticaland/between/commit/26bc31463cc4436a01b87b29aee6e67a66be93c0))
+
 ## [0.3.0](https://github.com/staticaland/between/compare/v0.2.0...v0.3.0) (2025-06-22)
 
 
