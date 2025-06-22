@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+version: 2
+
+# The changelog is managed by release-please
+changelog:
+  disable: true
+
+builds:
+  - binary: between
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - "-s -w -X main.version={{.Version}} -X main.commit={{.Commit}}"
+
+nfpms:
+  - package_name: between
+    maintainer: 'staticaland'
+    formats:
+      - deb
+      - rpm
+      - archlinux
+
+brews:
+  - name: between
+    description: "A tool to extract content between two markers"
+    homepage: "https://github.com/staticaland/between"
+    goarm: 6
+    goamd64: v1
+    repository:
+      owner: staticaland
+      name: between
+    directory: Formula
+    install: |
+      bin.install "between"
