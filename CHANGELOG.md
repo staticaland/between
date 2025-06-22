@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/staticaland/between/compare/v0.2.0...v0.3.0) (2025-06-22)
+
+
+### Features
+
+* clean up package comment formatting ([a85402f](https://github.com/staticaland/between/commit/a85402f76c48a51661e90a1d4d4d0bbb8f5e136d))
+* switch from homebrew formula to cask with quarantine removal ([6bd9ab6](https://github.com/staticaland/between/commit/6bd9ab66400042737c97518dce46bc3073e9d0ee))
+
 ## [0.2.0](https://github.com/staticaland/between/compare/v0.1.0...v0.2.0) (2025-06-22)
 
 
