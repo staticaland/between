@@ -4,6 +4,14 @@ A CLI tool that replaces text between two markers in files.
 
 ## Installation
 
+### Homebrew (macOS/Linux)
+
+```bash
+brew install --cask staticaland/between/between
+```
+
+### From Source
+
 ```bash
 go build -o between
 ```
