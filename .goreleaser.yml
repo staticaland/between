@@ -24,15 +24,22 @@ nfpms:
       - rpm
       - archlinux
 
-brews:
+homebrew_casks:
   - name: between
     description: "A tool to extract content between two markers"
     homepage: "https://github.com/staticaland/between"
-    goarm: 6
-    goamd64: v1
     repository:
       owner: staticaland
       name: between
-    directory: Formula
-    install: |
-      bin.install "between"
+    # The Casks directory is the default, but we can be explicit.
+    directory: Casks
+    # This will prevent conflicts with the old formula.
+    conflicts:
+      formula: "between"
+    # To allow installation of unsigned binaries.
+    hooks:
+      post:
+        install: |
+          if system_command("/usr/bin/xattr", args: ["-h"]).exit_status == 0
+            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/between"]
+          end
