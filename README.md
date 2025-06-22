@@ -6,8 +6,16 @@ A CLI tool that replaces text between two markers in files.
 
 ### Homebrew (macOS/Linux)
 
+First, tap the repository:
+
 ```bash
-brew install --cask staticaland/between/between
+brew tap staticaland/between
+```
+
+Then, install the cask:
+
+```bash
+brew install --cask between
 ```
 
 ### From Source
