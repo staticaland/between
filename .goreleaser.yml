@@ -33,9 +33,6 @@ homebrew_casks:
       name: between
     # The Casks directory is the default, but we can be explicit.
     directory: Casks
-    # This will prevent conflicts with the old formula.
-    conflicts:
-      formula: "between"
     # To allow installation of unsigned binaries.
     hooks:
       post:
