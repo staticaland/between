@@ -2,6 +2,8 @@ package cmd
 
 import (
 	"fmt"
+	"io"
+	"os"
 
 	"github.com/spf13/cobra"
 	"between/internal/processor"
@@ -24,15 +26,28 @@ then replace all content between them with the new content.
 
 Example:
   between replace -f README.md --content "New documentation content"
-  between replace -f config.yaml --start-marker "# BEGIN" --end-marker "# END" --content "new config"`,
+  between replace -f config.yaml --start-marker "# BEGIN" --end-marker "# END" --content "new config"
+  cat new_content.txt | between replace -f README.md`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if filename == "" {
 			return fmt.Errorf("filename is required")
 		}
+
 		if content == "" {
-			return fmt.Errorf("content is required")
+			stat, _ := os.Stdin.Stat()
+			if (stat.Mode() & os.ModeCharDevice) == 0 {
+				stdinContent, err := io.ReadAll(os.Stdin)
+				if err != nil {
+					return fmt.Errorf("failed to read from stdin: %w", err)
+				}
+				content = string(stdinContent)
+			}
 		}
-		
+
+		if content == "" {
+			return fmt.Errorf("content is required either via --content flag or stdin")
+		}
+
 		return processor.ProcessFile(filename, startMarker, endMarker, content)
 	},
 }
@@ -41,8 +56,7 @@ func init() {
 	replaceCmd.Flags().StringVarP(&filename, "file", "f", "", "File to process (required)")
 	replaceCmd.Flags().StringVar(&startMarker, "start-marker", "<!-- BEGIN -->", "Start marker")
 	replaceCmd.Flags().StringVar(&endMarker, "end-marker", "<!-- END -->", "End marker")
-	replaceCmd.Flags().StringVar(&content, "content", "", "New content to insert (required)")
-	
+	replaceCmd.Flags().StringVar(&content, "content", "", "New content to insert")
+
 	replaceCmd.MarkFlagRequired("file")
-	replaceCmd.MarkFlagRequired("content")
 }
