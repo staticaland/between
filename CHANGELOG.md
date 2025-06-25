@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/staticaland/between/compare/v0.4.0...v0.5.0) (2025-06-25)
+
+
+### Features
+
+* support stdin for content ([#4](https://github.com/staticaland/between/issues/4)) ([9b9f02f](https://github.com/staticaland/between/commit/9b9f02fb74fccbf6fcce3e3e4afefd7883b8b056))
+
 ## [0.4.0](https://github.com/staticaland/between/compare/v0.3.0...v0.4.0) (2025-06-22)
 
 
